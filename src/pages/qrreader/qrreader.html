@@ -16,5 +16,5 @@
 <ion-content padding>
   <div>Scanned Data: {{this.scannedData}}</div>
   <button ion-button (click)=startReader()>Scan QRCode</button>
-  <input type=file (change)=readFile($event)>
+  <input type=file (change)=readFile($event) accept="image/*">
 </ion-content>

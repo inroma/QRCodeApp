@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { jsqrcode } from 'jsqrcode/src/QRCode';
+import jsqrcode from 'jsqrcode';
 
 /**
  * Generated class for the QRreaderPage page.
@@ -16,7 +16,7 @@ import { jsqrcode } from 'jsqrcode/src/QRCode';
   templateUrl: 'qrreader.html',
 })
 export class QRreaderPage {
-  scannedData:string = "";
+  scannedData: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private barcodeScanner: BarcodeScanner) {
   }
@@ -43,6 +43,7 @@ export class QRreaderPage {
       image.onload = () => {
         var QrDecoder = new jsqrcode();
         this.scannedData = QrDecoder.decode(image);
+        console.log(this.scannedData);
       };
       image.src = target.result;
     }
